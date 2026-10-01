@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Her Little Pink Lily World 🌷</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",Arial,sans-serif;background:#fff1f8;color:#713b59;overflow-x:hidden}
+body.night{background:#171127;color:#f9d8ea}
+nav{position:sticky;top:0;z-index:50;background:rgba(255,245,250,.9);backdrop-filter:blur(12px);display:flex;justify-content:center;gap:8px;padding:12px;box-shadow:0 3px 20px #8b476522;flex-wrap:wrap}
+body.night nav{background:rgba(25,18,42,.9)}
+nav a,nav button{border:0;background:#ffe0ef;color:#a83e70;padding:9px 14px;border-radius:20px;font-weight:700;cursor:pointer;text-decoration:none}
+.hero{text-align:center;padding:55px 20px 35px;background:radial-gradient(circle at 50% 20%,#fff 0,#ffe1f0 45%,#ffc8e0 100%)}
+.hero h1{font-size:clamp(2.5rem,8vw,5rem);color:#d84d88}
+.hero p{font-size:1.15rem;margin:12px auto;max-width:650px;line-height:1.7}
+.hero .start{margin-top:20px;background:linear-gradient(135deg,#f28abb,#d94c87);color:#fff;border:0;border-radius:30px;padding:15px 28px;font-size:1rem;font-weight:800;cursor:pointer;box-shadow:0 8px 25px #d94c8744}
+section{width:min(1050px,92%);margin:35px auto;padding:28px;border-radius:30px;background:rgba(255,255,255,.78);box-shadow:0 10px 35px #9b4c6c18}
+body.night section{background:rgba(41,28,57,.9)}
+h2{text-align:center;color:#d84d88;margin-bottom:10px;font-size:2rem}
+.section-sub{text-align:center;margin-bottom:20px;line-height:1.6}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:18px}
+.stat{background:#fff;padding:10px 18px;border-radius:25px;font-weight:800}
+body.night .stat{background:#352441}
+.farm{height:500px;position:relative;border:7px solid white;border-radius:30px;overflow:hidden;background:#a9dc91}
+.sky{position:absolute;inset:0 0 48%;background:linear-gradient(#9ee4ff,#d8f8ff)}
+body.night .sky{background:linear-gradient(#181533,#3a2556)}
+.sun{position:absolute;width:82px;height:82px;border-radius:50%;background:#fff1a3;top:35px;right:55px;box-shadow:0 0 40px #fff1a3}
+body.night .sun{background:#f7e9ff;box-shadow:0 0 30px #fff}
+.ground{position:absolute;bottom:0;width:100%;height:58%;background:repeating-linear-gradient(165deg,#8ac778 0 20px,#82bc70 21px 40px)}
+body.night .ground{background:repeating-linear-gradient(165deg,#315c3b 0 20px,#2a5134 21px 40px)}
+.path{position:absolute;width:160px;height:100%;left:50%;bottom:-42%;transform:translateX(-50%) rotate(5deg);background:#d7ad84;border-radius:50%;opacity:.7}
+.flowers{position:absolute;inset:40% 0 0}
+.flower{position:absolute;width:55px;height:110px;cursor:pointer;animation:sway 3s ease-in-out infinite;transform-origin:bottom center}
+.stem{position:absolute;width:6px;height:75px;background:#39964b;bottom:0;left:25px;border-radius:10px}
+.leaf{position:absolute;width:30px;height:13px;background:#4cae5a;border-radius:100% 0;bottom:32px;left:2px;transform:rotate(-25deg)}
+.leaf.two{left:25px;bottom:48px;transform:rotate(25deg)}
+.bloom{position:absolute;width:50px;height:50px;top:0;left:3px}
+.petal{position:absolute;width:25px;height:35px;background:linear-gradient(#ffc4df,#e95d9a);border-radius:60% 60% 45% 45%;left:13px;top:5px;transform-origin:50% 100%}
+.petal:nth-child(1){transform:rotate(0)}.petal:nth-child(2){transform:rotate(72deg)}.petal:nth-child(3){transform:rotate(144deg)}.petal:nth-child(4){transform:rotate(216deg)}.petal:nth-child(5){transform:rotate(288deg)}
+.center{position:absolute;width:14px;height:14px;border-radius:50%;background:#ffd85c;left:18px;top:18px;z-index:2}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.controls{text-align:center;margin:18px}
+.action{border:0;border-radius:25px;padding:12px 18px;margin:5px;background:#e968a1;color:#fff;font-weight:800;cursor:pointer}
+.teacher-grid,.letters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.teacher-card,.letter{padding:20px;text-align:center;background:#fff0f7;border-radius:22px;cursor:pointer;transition:.25s}
+.teacher-card:hover,.letter:hover{transform:translateY(-5px)}
+.teacher-card .emoji{font-size:2.3rem;display:block;margin-bottom:8px}
+.classroom{background:#f6d5e6;border-radius:25px;padding:25px;text-align:center}
+.board{background:#315b47;color:#fff;border-radius:15px;padding:30px;margin-bottom:20px;font-size:1.2rem;line-height:1.8;box-shadow:inset 0 0 0 5px #c99b68}
+.desk{display:flex;justify-content:center;gap:25px;font-size:3rem}
+.letter{font-size:1.05rem;font-weight:700}
+.letter-content{display:none;margin-top:10px;font-weight:400;line-height:1.6;color:#7b4260}
+.letter.open .letter-content{display:block}
+#secret{display:none;text-align:center;padding:35px;background:linear-gradient(135deg,#ffd7eb,#fff);border-radius:28px}
+#secret h2{font-size:2.4rem}
+body.night #secret{background:linear-gradient(135deg,#3b234f,#21172e)}
+.night-stars{display:none}
+body.night .night-stars{display:block;position:fixed;inset:0;pointer-events:none;z-index:-1}
+.star{position:absolute;color:#fff;font-size:18px;animation:twinkle 2s infinite alternate}
+@keyframes twinkle{from{opacity:.2}to{opacity:1}}
+.heart{position:fixed;pointer-events:none;z-index:100;font-size:22px;animation:float 3s forwards}
+@keyframes float{to{transform:translateY(-170px) scale(1.5);opacity:0}}
+footer{text-align:center;padding:35px}
+@media(max-width:600px){.farm{height:420px}.sun{width:60px;height:60px;right:25px}.desk{font-size:2.3rem}}
+</style>
+</head>
+<body>
+
+<div class="night-stars" id="stars"></div>
+
+<nav>
+<a href="#farm">🌷 Farm</a>
+<a href="#teacher">👩‍🏫 Future Teacher</a>
+<a href="#classroom">📚 Classroom</a>
+<a href="#letters">💌 Letters</a>
+<button onclick="toggleNight()">🌙 Night</button>
+</nav>
+
+<header class="hero">
+<h1>🌸 Her Little Pink Lily World 🌸</h1>
+<p>A tiny digital garden made especially for a girl who loves pink, lilies, and dreams of becoming a teacher. 💗</p>
+<button class="start" onclick="document.getElementById('farm').scrollIntoView()">Enter Her Garden 🌷</button>
+</header>
+
+<section id="farm">
+<h2>🌷 The Pink Lily Farm</h2>
+<p class="section-sub">Plant flowers, water the garden, and click the lilies. Every little interaction adds a little love.</p>
+<div class="stats">
+<div class="stat">🌷 Lilies: <span id="count">12</span></div>
+<div class="stat">💗 Love Points: <span id="love">0</span></div>
+</div>
+<div class="farm">
+<div class="sky"></div><div class="sun"></div><div class="ground"></div><div class="path"></div>
+<div class="flowers" id="flowers"></div>
+</div>
+<div class="controls">
+<button class="action" onclick="plantLily()">🌱 Plant a Lily</button>
+<button class="action" onclick="waterFarm()">💧 Water the Farm</button>
+<button class="action" onclick="bloomAll()">✨ Make Them Bloom</button>
+</div>
+</section>
+
+<section id="teacher">
+<h2>👩‍🏫 Future Teacher's Garden</h2>
+<p class="section-sub">Four little flowers for four qualities I hope you never forget you have.</p>
+<div class="teacher-grid">
+<div class="teacher-card" onclick="cardMsg('🌱 Growth','Every lesson, mistake, and challenge is helping you grow into the teacher you dream of becoming.')"><span class="emoji">🌱</span><b>Growth</b></div>
+<div class="teacher-card" onclick="cardMsg('💗 Kindness','Your kindness can become the reason a student feels seen, understood, and brave enough to try again.')"><span class="emoji">💗</span><b>Kindness</b></div>
+<div class="teacher-card" onclick="cardMsg('📚 Knowledge','Keep learning, because one day the things you learn today may become someone else’s favorite lesson.')"><span class="emoji">📚</span><b>Knowledge</b></div>
+<div class="teacher-card" onclick="cardMsg('✨ Inspiration','You do not have to be perfect to inspire someone. Sometimes simply showing up and trying is already powerful.')"><span class="emoji">✨</span><b>Inspiration</b></div>
+</div>
+</section>
+
+<section id="classroom">
+<h2>📚 Her Future Classroom</h2>
+<p class="section-sub">Welcome to the classroom of my favorite future teacher. 💕</p>
+<div class="classroom">
+<div class="board">
+<b>WELCOME TO YOUR FUTURE CLASSROOM</b><br>
+Today's Lesson: <i>"You are capable of more than you think."</i><br>
+Homework: Keep chasing your dreams. 🌸
+</div>
+<div class="desk">📖 &nbsp; ✏️ &nbsp; 🌷 &nbsp; ☕ &nbsp; 📝</div>
+</div>
+</section>
+
+<section id="letters">
+<h2>💌 Open When...</h2>
+<p class="section-sub">Tap an envelope whenever you need a tiny reminder.</p>
+<div class="letters">
+<div class="letter" onclick="toggleLetter(this)">💌<br>Open when you're tired<div class="letter-content">Rest. You don't have to finish everything in one day. Your dreams aren't going anywhere. 🌷</div></div>
+<div class="letter" onclick="toggleLetter(this)">💌<br>Open when you doubt yourself<div class="letter-content">Remember how far you've already come. The version of you who started this journey would be proud of you today. 💗</div></div>
+<div class="letter" onclick="toggleLetter(this)">💌<br>Open when you're stressed<div class="letter-content">Breathe. One task at a time. One page at a time. One day at a time. You got this, future teacher. 📚</div></div>
+<div class="letter" onclick="toggleLetter(this)">💌<br>Open when you miss me<div class="letter-content">Here's a virtual hug. 🤗 And a reminder that someone is thinking about you and hoping you're okay. 💕</div></div>
+<div class="letter" onclick="toggleLetter(this)">💌<br>Open when you need a smile<div class="letter-content">SURPRISE! 🌷 You are officially required to smile for at least five seconds. No arguing. 😂💗</div></div>
+</div>
+</section>
+
+<section>
+<h2>🌷 Why Lilies?</h2>
+<p class="section-sub" style="max-width:750px;margin:auto">
+Because you love lilies. So I wanted to make you a little place surrounded by something that makes you happy.
+<br><br>
+<strong>And honestly...</strong><br>
+No flower here is prettier than you. 💗
+</p>
+</section>
+
+<section id="secret">
+<h2>🔓 You Found the Final Surprise</h2>
+<p style="line-height:1.8;max-width:700px;margin:auto">
+Okay... you found everything. 🌸<br><br>
+But there's one thing I couldn't put inside this garden.<br><br>
+<strong>The real reason I made all of this.</strong><br><br>
+I just wanted to make something that could make you smile.
+Something small, but made with a lot of thought and care. 💗<br><br>
+No matter how busy school gets, how many assignments pile up, or how difficult some days become, I hope you remember that your dreams are worth chasing.
+<br><br>
+<strong>Happy National Girlfriend Day, my future teacher. 🌷💗</strong>
+</p>
+</section>
+
+<footer>Made with 🌷, pink pixels, and a whole lot of love. 💗</footer>
+
+<script>
+let flowerCount=12,love=0,clicks=0;
+const flowers=document.getElementById("flowers");
+
+function createFlower(){
+ const f=document.createElement("div");
+ f.className="flower";
+ f.style.left=Math.random()*94+"%";
+ f.style.top=Math.random()*55+"%";
+ f.style.animationDelay=Math.random()*2+"s";
+ f.innerHTML='<div class="bloom"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div><div class="stem"></div><div class="leaf"></div><div class="leaf two"></div>';
+ f.onclick=()=>{
+   love+=5; clicks++;
+   document.getElementById("love").textContent=love;
+   const r=f.getBoundingClientRect(); heart(r.left,r.top);
+   if(clicks>=8) unlockSecret();
+ };
+ flowers.appendChild(f);
+}
+function plantLily(){
+ flowerCount++;love+=10;
+ document.getElementById("count").textContent=flowerCount;
+ document.getElementById("love").textContent=love;
+ createFlower();heart(innerWidth/2,innerHeight/2);
+ if(flowerCount>=20) unlockSecret();
+}
+function waterFarm(){
+ document.querySelectorAll(".flower").forEach(f=>{
+   f.style.animationDuration="1.2s";
+   setTimeout(()=>f.style.animationDuration="3s",2500);
+ });
+ love+=15;document.getElementById("love").textContent=love;
+ for(let i=0;i<5;i++)setTimeout(()=>heart(Math.random()*innerWidth,innerHeight),i*100);
+}
+function bloomAll(){
+ document.querySelectorAll(".flower").forEach(f=>f.style.transform="scale(1.18)");
+ love+=20;document.getElementById("love").textContent=love;
+ setTimeout(()=>document.querySelectorAll(".flower").forEach(f=>f.style.transform=""),900);
+}
+function heart(x,y){
+ const h=document.createElement("div");h.className="heart";h.textContent=["💗","💕","🌸","🌷"][Math.floor(Math.random()*4)];
+ h.style.left=x+"px";h.style.top=y+"px";document.body.appendChild(h);setTimeout(()=>h.remove(),3000);
+}
+function cardMsg(title,msg){
+ alert(title+"\\n\\n"+msg);
+ love+=10;document.getElementById("love").textContent=love;
+}
+function toggleLetter(el){el.classList.toggle("open");love+=5;document.getElementById("love").textContent=love;checkUnlock();}
+function toggleNight(){
+ document.body.classList.toggle("night");
+ const s=document.getElementById("stars");
+ if(s.innerHTML===""){
+   for(let i=0;i<55;i++){const x=document.createElement("span");x.className="star";x.textContent="✦";x.style.left=Math.random()*100+"%";x.style.top=Math.random()*100+"%";x.style.animationDelay=Math.random()*2+"s";s.appendChild(x);}
+ }
+}
+function checkUnlock(){if(document.querySelectorAll(".letter.open").length>=3)unlockSecret()}
+function unlockSecret(){
+ document.getElementById("secret").style.display="block";
+}
+for(let i=0;i<12;i++)createFlower();
+</script>
+</body>
+</html>
